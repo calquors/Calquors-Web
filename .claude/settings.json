@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tar -x -C /tmp/calquors-design)",
+      "Read(//tmp/**)",
+      "Bash(npx create-vite@latest /Users/jai/Developer/Calquors --template react)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(pkill -f \"vite --port 5173\")"
+    ],
+    "additionalDirectories": [
+      "/tmp"
+    ]
+  }
+}
