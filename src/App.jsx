@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-ro
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import ThemeToggle from './components/ThemeToggle'
+import SEOHead from './components/SEOHead'
 import HomePage from './pages/HomePage'
 import WorkPage from './pages/WorkPage'
 import ServicesPage from './pages/ServicesPage'
@@ -26,6 +27,7 @@ function AppInner() {
 
   return (
     <div className="app">
+      <SEOHead />
       <div className="bg-grid" />
       <div className="bg-noise" />
       <ScrollToTop />

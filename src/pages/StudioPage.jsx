@@ -84,11 +84,16 @@ export default function StudioPage() {
               </div>
               <div className="brand-body">
                 <div className="row between center" style={{ marginBottom: 12 }}>
-                  <span className="mono text-dim">WEB</span>
-                  <span className="mono text-accent">LIVE</span>
+                  <span className="mono text-dim">WEB PLATFORM</span>
+                  <a href="https://omeglevc.com" target="_blank" rel="noopener noreferrer" className="mono text-accent">→ omeglevc.com</a>
                 </div>
                 <h3 className="h3">OmegleVC</h3>
                 <p className="body" style={{ marginTop: 8 }}>A modern video chat platform for spontaneous real-time connections, built with WebRTC.</p>
+                <div className="brand-meta" style={{ marginTop: 16 }}>
+                  <div><span className="mono text-dim">SHIPPED</span><span>2025</span></div>
+                  <div><span className="mono text-dim">PLATFORM</span><span>Web · WebRTC</span></div>
+                  <div><span className="mono text-dim">BACKLINK</span><a href="https://omeglevc.com" target="_blank" rel="noopener noreferrer" className="text-accent" style={{ textDecoration: 'underline' }}>omeglevc.com ↗</a></div>
+                </div>
               </div>
             </div>
 
@@ -102,11 +107,16 @@ export default function StudioPage() {
               </div>
               <div className="brand-body">
                 <div className="row between center" style={{ marginBottom: 12 }}>
-                  <span className="mono text-dim">iOS</span>
-                  <span className="mono text-accent">APP STORE</span>
+                  <span className="mono text-dim">iOS APP</span>
+                  <a href="https://revfit.app" target="_blank" rel="noopener noreferrer" className="mono text-accent">→ revfit.app</a>
                 </div>
                 <h3 className="h3">Revfit</h3>
                 <p className="body" style={{ marginTop: 8 }}>Native iOS fitness app with workout tracking, progress analytics, and personalised training plans.</p>
+                <div className="brand-meta" style={{ marginTop: 16 }}>
+                  <div><span className="mono text-dim">SHIPPED</span><span>2025</span></div>
+                  <div><span className="mono text-dim">PLATFORM</span><span>iOS App Store</span></div>
+                  <div><span className="mono text-dim">BACKLINK</span><a href="https://revfit.app" target="_blank" rel="noopener noreferrer" className="text-accent" style={{ textDecoration: 'underline' }}>revfit.app ↗</a></div>
+                </div>
               </div>
             </div>
           </div>

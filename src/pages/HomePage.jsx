@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import ProjectVisual from '../components/ProjectVisual'
 
 const FEATURED_WORK = [
-  { slug: 'revfit', name: 'Revfit', category: 'iOS App · App Store', year: '2025', color: 'oklch(0.55 0.18 145)' },
-  { slug: 'omeglevc', name: 'OmegleVC', category: 'Web Platform', year: '2025', color: 'oklch(0.5 0.2 255)' },
-  { slug: 'rivelo', name: 'Rivelo Labs', category: 'Engineering · Web', year: '2025', color: 'oklch(0.45 0.16 200)' },
+  { slug: 'revfit', name: 'Revfit', category: 'iOS App · App Store', year: '2025', color: 'oklch(0.55 0.18 145)', url: 'https://revfit.app' },
+  { slug: 'omeglevc', name: 'OmegleVC', category: 'Web Platform', year: '2025', color: 'oklch(0.5 0.2 255)', url: 'https://omeglevc.com' },
+  { slug: 'rivelo', name: 'Rivelo Labs', category: 'Engineering · Web', year: '2025', color: 'oklch(0.45 0.16 200)', url: 'https://www.rivelolabs.com' },
 ]
 
 export default function HomePage() {
@@ -54,15 +55,37 @@ export default function HomePage() {
 
           <p className="body-lg hero-sub reveal" style={{ animationDelay: '0.2s' }}>
             Calquors is a product studio building mobile apps, websites, and the
-            engineering systems that make them work. Our portfolio of products is
-            shipped under{' '}
-            <span
+            engineering systems that make them work. Our portfolio of flagship products includes{' '}
+            <a
+              href="https://omeglevc.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-accent"
-              style={{ textDecoration: 'underline', textDecorationColor: 'color-mix(in oklch, var(--accent) 40%, transparent)', textUnderlineOffset: '3px', cursor: 'pointer' }}
-              onClick={() => navigate('/studio')}
+              style={{ textDecoration: 'underline', textDecorationColor: 'color-mix(in oklch, var(--accent) 40%, transparent)', textUnderlineOffset: '3px' }}
+            >
+              OmegleVC
+            </a>
+            ,{' '}
+            <a
+              href="https://revfit.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent"
+              style={{ textDecoration: 'underline', textDecorationColor: 'color-mix(in oklch, var(--accent) 40%, transparent)', textUnderlineOffset: '3px' }}
+            >
+              Revfit
+            </a>
+            , and{' '}
+            <a
+              href="https://www.rivelolabs.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent"
+              style={{ textDecoration: 'underline', textDecorationColor: 'color-mix(in oklch, var(--accent) 40%, transparent)', textUnderlineOffset: '3px' }}
             >
               Rivelo Labs
-            </span>.
+            </a>
+            .
           </p>
 
           <div className="hero-cta reveal" style={{ animationDelay: '0.3s' }}>
@@ -283,7 +306,7 @@ function WorkCard({ project, index, onClick }) {
     <div className="work-card" onClick={onClick}>
       <div className="work-thumb" style={{ background: `linear-gradient(135deg, ${project.color}, color-mix(in oklch, ${project.color} 50%, var(--bg)))` }}>
         <div className="work-thumb-grid" />
-        <div className="work-thumb-shape" />
+        <ProjectVisual slug={project.slug} />
         <span className="work-thumb-num mono">{String(index + 1).padStart(2, '0')}</span>
       </div>
       <div className="work-meta">
@@ -291,7 +314,19 @@ function WorkCard({ project, index, onClick }) {
           <h3 className="work-name">{project.name}</h3>
           <span className="mono text-dim">{project.year}</span>
         </div>
-        <span className="mono text-mute" style={{ fontSize: 11, letterSpacing: '0.05em', textTransform: 'uppercase' }}>{project.category}</span>
+        <div className="row between center" style={{ marginTop: 4 }}>
+          <span className="mono text-mute" style={{ fontSize: 11, letterSpacing: '0.05em', textTransform: 'uppercase' }}>{project.category}</span>
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="mono text-accent"
+            style={{ fontSize: 11, textDecoration: 'underline' }}
+          >
+            {project.url.replace('https://', '')} ↗
+          </a>
+        </div>
       </div>
     </div>
   )

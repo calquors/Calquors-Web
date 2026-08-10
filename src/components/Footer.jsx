@@ -39,10 +39,10 @@ export default function Footer() {
             ))}
           </div>
           <div className="footer-col">
-            <h5>Products</h5>
-            <span className="footer-link" onClick={() => navigate('/studio')}>Rivelo Labs</span>
-            <span className="footer-link" onClick={() => navigate('/studio')}>OmegleVC</span>
-            <span className="footer-link" onClick={() => navigate('/studio')}>Revfit</span>
+            <h5>Products & Backlinks</h5>
+            <a href="https://www.rivelolabs.com" target="_blank" rel="noopener noreferrer" className="footer-link">Rivelo Labs ↗</a>
+            <a href="https://omeglevc.com" target="_blank" rel="noopener noreferrer" className="footer-link">OmegleVC (omeglevc.com) ↗</a>
+            <a href="https://revfit.app" target="_blank" rel="noopener noreferrer" className="footer-link">Revfit (revfit.app) ↗</a>
           </div>
           <div className="footer-col">
             <h5>Contact</h5>

@@ -1,0 +1,14 @@
+{
+  "name": "Calquors Studio",
+  "short_name": "Calquors",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#0d0e12",
+  "background_color": "#0d0e12",
+  "display": "standalone"
+}

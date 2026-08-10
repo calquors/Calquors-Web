@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import ProjectVisual from '../components/ProjectVisual'
 
 const PROJECTS = [
-  { slug: 'revfit', name: 'Revfit', cat: 'mobile', category: 'iOS App', year: '2025', color: 'oklch(0.55 0.18 145)', role: 'Design + Build', desc: 'A fitness app built for the App Store. Workout tracking, progress analytics, and personalised training plans — all native iOS.', tags: ['iOS', 'SwiftUI', 'App Store'], stats: [{ k: 'Platform', v: 'iOS' }, { k: 'Status', v: 'Live' }, { k: 'Year', v: '2025' }] },
-  { slug: 'omeglevc', name: 'OmegleVC', cat: 'web', category: 'Web Platform', year: '2025', color: 'oklch(0.5 0.2 255)', role: 'Design + Build', desc: 'A modern video chat platform for spontaneous real-time connections. Built for the web with low-latency peer-to-peer technology.', tags: ['WebRTC', 'React', 'Node.js'], stats: [{ k: 'Platform', v: 'Web' }, { k: 'Status', v: 'Live' }, { k: 'Year', v: '2025' }] },
-  { slug: 'rivelo', name: 'Rivelo Labs', cat: 'engineering', category: 'Engineering · Web', year: '2025', color: 'oklch(0.45 0.16 200)', role: 'Full Studio', desc: 'Our engineering and technology arm. Rivelo ships internal tools, experimental apps, and the platforms that power Calquors client work.', tags: ['Web', 'iOS', 'Android'], stats: [{ k: 'Platform', v: 'Web + Mobile' }, { k: 'Status', v: 'Live' }, { k: 'Year', v: '2025' }] },
+  { slug: 'revfit', name: 'Revfit', cat: 'mobile', category: 'iOS App', year: '2025', color: 'oklch(0.55 0.18 145)', role: 'Design + Build', desc: 'A fitness app built for the App Store. Workout tracking, progress analytics, and personalised training plans — all native iOS.', tags: ['iOS', 'SwiftUI', 'App Store'], stats: [{ k: 'Platform', v: 'iOS' }, { k: 'Status', v: 'Live' }, { k: 'Year', v: '2025' }], url: 'https://revfit.app' },
+  { slug: 'omeglevc', name: 'OmegleVC', cat: 'web', category: 'Web Platform', year: '2025', color: 'oklch(0.5 0.2 255)', role: 'Design + Build', desc: 'A modern video chat platform for spontaneous real-time connections. Built for the web with low-latency peer-to-peer technology.', tags: ['WebRTC', 'React', 'Node.js'], stats: [{ k: 'Platform', v: 'Web' }, { k: 'Status', v: 'Live' }, { k: 'Year', v: '2025' }], url: 'https://omeglevc.com' },
+  { slug: 'rivelo', name: 'Rivelo Labs', cat: 'engineering', category: 'Engineering · Web', year: '2025', color: 'oklch(0.45 0.16 200)', role: 'Full Studio', desc: 'Our engineering and technology arm. Rivelo ships internal tools, experimental apps, and the platforms that power Calquors client work.', tags: ['Web', 'iOS', 'Android'], stats: [{ k: 'Platform', v: 'Web + Mobile' }, { k: 'Status', v: 'Live' }, { k: 'Year', v: '2025' }], url: 'https://www.rivelolabs.com' },
 ]
 
 export default function WorkPage() {
@@ -51,7 +52,7 @@ export default function WorkPage() {
 
           <div className="work-grid">
             {visible.map((p, i) => (
-              <button
+              <div
                 key={p.slug}
                 className="work-tile"
                 onClick={() => setOpen(p)}
@@ -59,13 +60,22 @@ export default function WorkPage() {
               >
                 <div className="work-tile-thumb" style={{ background: `linear-gradient(135deg, ${p.color}, color-mix(in oklch, ${p.color} 30%, var(--bg)))` }}>
                   <div className="work-thumb-grid" />
-                  <ProjectMark project={p} />
+                  <ProjectVisual slug={p.slug} />
                   <span className="work-tile-year mono">{p.year}</span>
                 </div>
                 <div className="work-tile-meta">
                   <div className="row between center" style={{ marginBottom: 6 }}>
                     <h3 style={{ fontSize: 22, fontWeight: 500, letterSpacing: '-0.02em' }}>{p.name}</h3>
-                    <span className="work-tile-arrow">→</span>
+                    <a
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="mono text-accent"
+                      style={{ fontSize: 12, textDecoration: 'underline' }}
+                    >
+                      {p.url.replace('https://', '')} ↗
+                    </a>
                   </div>
                   <div className="row gap-2 wrap">
                     <span className="mono text-dim" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{p.category}</span>
@@ -73,7 +83,7 @@ export default function WorkPage() {
                     <span className="mono text-dim" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{p.role}</span>
                   </div>
                 </div>
-              </button>
+              </div>
             ))}
           </div>
         </div>
@@ -162,7 +172,7 @@ function CaseDrawer({ project, onClose }) {
 
         <div className="drawer-hero" style={{ background: `linear-gradient(135deg, ${project.color}, color-mix(in oklch, ${project.color} 30%, var(--bg)))` }}>
           <div className="work-thumb-grid" />
-          <ProjectMark project={project} />
+          <ProjectVisual slug={project.slug} />
           <div className="drawer-hero-meta">
             <span className="mono" style={{ color: 'rgba(255,255,255,0.7)' }}>{project.category} / {project.year}</span>
             <h2 className="h-display" style={{ color: 'white', fontSize: 'clamp(40px, 6vw, 72px)', marginTop: 8 }}>{project.name}</h2>
@@ -178,11 +188,20 @@ function CaseDrawer({ project, onClose }) {
                 We delivered design, engineering, and store launch — on schedule, with a stabilization
                 window built in. The numbers below tell the rest of the story.
               </p>
-              <div className="drawer-tags">
+              <div className="drawer-tags" style={{ marginBottom: 24 }}>
                 {project.tags.map(t => <span key={t} className="cap-tag mono">{t}</span>)}
+              </div>
+              <div style={{ marginTop: 24 }}>
+                <a href={project.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                  Visit {project.name} ({project.url.replace('https://', '')}) ↗
+                </a>
               </div>
             </div>
             <div className="drawer-side">
+              <div className="drawer-meta-row">
+                <span className="mono text-dim">LIVE LINK</span>
+                <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-accent" style={{ textDecoration: 'underline' }}>{project.url.replace('https://', '')} ↗</a>
+              </div>
               <div className="drawer-meta-row">
                 <span className="mono text-dim">ROLE</span>
                 <span>{project.role}</span>
