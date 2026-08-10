@@ -44,7 +44,7 @@ export default function HomePage() {
         <div className="container hero-inner">
           <div className="hero-meta reveal">
             <span className="eyebrow">Calquors / Studio</span>
-            <span className="mono text-dim">EST. 2021 — REMOTE-FIRST</span>
+            <span className="mono text-dim">EST. 2021— REMOTE-FIRST</span>
           </div>
 
           <h1 className="h-display hero-title reveal" style={{ animationDelay: '0.1s' }}>
