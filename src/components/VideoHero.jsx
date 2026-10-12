@@ -138,8 +138,7 @@ export default function VideoHero() {
         </div>
 
         {variant && <button
-          className="vh-sound vh-fade"
-          style={{ animationDelay: `${subDelay + 0.2}s` }}
+          className="vh-sound"
           onClick={toggleSound}
           aria-pressed={!muted}
           aria-label={muted ? 'Turn sound on' : 'Turn sound off'}

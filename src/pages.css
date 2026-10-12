@@ -10,6 +10,7 @@
   min-height: 620px;
   overflow: hidden;
   isolation: isolate;
+  container-type: size;
   color: #fff;
   background: #000;
 }
@@ -96,27 +97,45 @@
 }
 @keyframes vh-fade { to { opacity: 1; filter: blur(0); } }
 
+/* The sound control also covers the source video's small corner mark. */
 .vh-sound {
+  position: absolute;
+  top: calc(max(12px, env(safe-area-inset-top)) + 68px);
+  right: max(20px, env(safe-area-inset-right));
+  z-index: 2;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  height: 34px;
-  padding: 0 14px;
-  margin-bottom: 56px; /* clears the theme toggle */
-  border-radius: 999px;
+  width: 144px;
+  height: 52px;
+  margin: 0;
+  padding: 0 16px;
+  border-radius: 14px;
   color: #fff;
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: rgb(255 255 255 / 0.08);
-  border: 1px solid rgb(255 255 255 / 0.16);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: background 0.2s;
+  background: #181a1f;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.2);
+  transition: background 0.2s, border-color 0.2s;
   flex-shrink: 0;
 }
-.vh-sound:hover { background: rgb(255 255 255 / 0.16); }
+.vh-sound:hover { background: #24272e; border-color: rgb(255 255 255 / 0.4); }
+.vh-sound:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+/* Track the mark at 90.625% x / 82.4% y in the 16:9 source,
+   including the centred object-fit: cover crop and the hero's minimum height.
+   On narrower views the mark is cropped out; keep the control under the nav. */
+@media (min-aspect-ratio: 3/2) {
+  .vh .vh-sound {
+    left: clamp(88px, calc(50% + max(40.625cqw, 72.2222cqh)), calc(100% - 88px));
+    top: clamp(100px, calc(50% + max(32.4cqh, 18.225cqw)), calc(100% - 66px));
+    right: auto;
+    transform: translate(-50%, -50%);
+  }
+}
 .vh-bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
 .vh-bars i { display: block; width: 2px; height: 3px; background: currentColor; border-radius: 1px; }
 .vh-bars.is-on i { animation: vh-eq 0.9s ease-in-out infinite alternate; }
@@ -129,13 +148,6 @@
   .vh .vh-inner { padding-bottom: calc(88px + env(safe-area-inset-bottom)); }
   .vh-title { font-size: clamp(32px, 9vw, 44px); margin-bottom: 16px; }
   .vh-sub { font-size: 15px; max-width: 36ch; }
-  .vh-sound {
-    position: absolute;
-    top: calc(max(12px, env(safe-area-inset-top)) + 68px);
-    right: 20px;
-    height: 40px;
-    margin: 0;
-  }
 }
 @media (max-height: 520px) and (orientation: landscape) {
   /* phones held sideways: keep the copy compact */
@@ -143,7 +155,6 @@
   .vh .vh-inner { padding-bottom: 24px; }
   .vh-title { font-size: 30px; margin-bottom: 10px; }
   .vh-sub { display: none; }
-  .vh-sound { top: 80px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
