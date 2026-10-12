@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { COMPANY } from '../data/site'
 
 export default function ContactPage() {
-  const navigate = useNavigate()
   const [form, setForm] = useState({
     name: '', email: '', company: '',
     services: [], budget: '', timeline: '', message: '',
@@ -41,10 +41,30 @@ export default function ContactPage() {
     return Object.keys(e).length === 0
   }
 
+  // No backend yet: open the visitor's email app with the brief pre-filled,
+  // addressed to support. They press send, and it lands in our inbox.
+  const mailtoHref = () => {
+    const subject = `New project — ${form.name}${form.company ? ` (${form.company})` : ''}`
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      form.company && `Company: ${form.company}`,
+      `Needs: ${form.services.join(', ')}`,
+      `Budget: ${form.budget}`,
+      form.timeline && `Timeline: ${form.timeline}`,
+      '',
+      form.message,
+    ].filter(l => l !== '' && l !== undefined && l !== false).join('\n')
+    return `mailto:${COMPANY.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+  }
+
   const submit = (ev) => {
     ev.preventDefault()
     setTouched({ name: true, email: true, services: true, budget: true, message: true })
-    if (validate()) setSubmitted(true)
+    if (validate()) {
+      window.location.href = mailtoHref()
+      setSubmitted(true)
+    }
   }
 
   if (submitted) {
@@ -58,22 +78,26 @@ export default function ContactPage() {
                   <path d="M5 12 L10 17 L19 7" stroke="var(--accent-fg)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
-              <span className="eyebrow">Message received</span>
+              <span className="eyebrow">Almost there</span>
               <h1 className="h-display" style={{ marginTop: 16, maxWidth: '14ch' }}>
-                Got it. We'll<br />be in <em style={{ fontStyle: 'normal', color: 'var(--accent)' }}>touch</em>.
+                Hit <em style={{ fontStyle: 'normal', color: 'var(--accent)' }}>send</em><br />and we're on it.
               </h1>
               <p className="body-lg" style={{ marginTop: 24 }}>
-                Thanks, <strong style={{ color: 'var(--fg)' }}>{form.name}</strong>. Someone from the
-                Calquors team will reply within one business day with a written scope, timeline,
-                and quote. Look out for an email at <span className="mono text-accent">{form.email}</span>.
+                Thanks, <strong style={{ color: 'var(--fg)' }}>{form.name}</strong>. Your email app
+                should have opened with your brief ready to go — just press send. We reply within one
+                business day with a written scope, timeline and quote.
+              </p>
+              <p className="body" style={{ marginTop: 16 }}>
+                Nothing opened? <a className="text-accent" style={{ textDecoration: 'underline' }} href={mailtoHref()}>Open it again</a> or
+                write to <a className="text-accent" style={{ textDecoration: 'underline' }} href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>.
               </p>
               <div className="row gap-3" style={{ marginTop: 40, justifyContent: 'center' }}>
-                <button className="btn btn-primary" onClick={() => navigate('/')}>
+                <Link className="btn btn-primary" to="/">
                   Back to home <span className="btn-arrow" />
-                </button>
-                <button className="btn btn-ghost" onClick={() => navigate('/work')}>
+                </Link>
+                <Link className="btn btn-ghost" to="/work">
                   Browse work
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -121,20 +145,18 @@ export default function ContactPage() {
                 </div>
               </FieldGroup>
 
-              <div className="field-row">
-                <FieldGroup label="Budget" required error={touched.budget && errors.budget}>
-                  <div className="seg">
-                    {budgets.map(b => (
-                      <button type="button" key={b} className={`seg-btn ${form.budget === b ? 'on' : ''}`} onClick={() => { update('budget', b); setTouched(t => ({ ...t, budget: true })) }}>{b}</button>
-                    ))}
-                  </div>
-                </FieldGroup>
-              </div>
+              <FieldGroup label="Budget" required error={touched.budget && errors.budget}>
+                <div className="seg">
+                  {budgets.map(b => (
+                    <button type="button" key={b} aria-pressed={form.budget === b} className={`seg-btn ${form.budget === b ? 'on' : ''}`} onClick={() => { update('budget', b); setTouched(t => ({ ...t, budget: true })) }}>{b}</button>
+                  ))}
+                </div>
+              </FieldGroup>
 
               <FieldGroup label="Timeline">
                 <div className="seg">
                   {timelines.map(t => (
-                    <button type="button" key={t} className={`seg-btn ${form.timeline === t ? 'on' : ''}`} onClick={() => update('timeline', t)}>{t}</button>
+                    <button type="button" key={t} aria-pressed={form.timeline === t} className={`seg-btn ${form.timeline === t ? 'on' : ''}`} onClick={() => update('timeline', t)}>{t}</button>
                   ))}
                 </div>
               </FieldGroup>
@@ -159,19 +181,23 @@ export default function ContactPage() {
             <aside className="contact-side">
               <div className="contact-side-block">
                 <span className="mono text-dim">EMAIL</span>
-                <a href="mailto:hello@calquors.studio" className="contact-link">hello@calquors.studio</a>
+                <a href={`mailto:${COMPANY.email}`} className="contact-link">{COMPANY.email}</a>
               </div>
               <div className="contact-side-block">
                 <span className="mono text-dim">RESPONSE TIME</span>
                 <span style={{ fontSize: 18 }}>Within 1 business day</span>
               </div>
               <div className="contact-side-block">
-                <span className="mono text-dim">LOCATIONS</span>
-                <span style={{ fontSize: 14, color: 'var(--fg-muted)' }}>Remote-first<br />EU · Asia · Americas</span>
+                <span className="mono text-dim">STUDIO</span>
+                <span style={{ fontSize: 14, color: 'var(--fg-muted)' }}>{COMPANY.country}<br />Working with clients worldwide</span>
               </div>
               <div className="contact-side-block">
-                <span className="mono text-dim">SUB-BRAND</span>
-                <span className="contact-link" style={{ cursor: 'pointer' }} onClick={() => navigate('/studio')}>Rivelo Labs →</span>
+                <span className="mono text-dim">COMPANY</span>
+                <Link className="contact-link" to="/company">{COMPANY.legalName} →</Link>
+              </div>
+              <div className="contact-side-block">
+                <span className="mono text-dim">OUR PRODUCTS</span>
+                <Link className="contact-link" to="/work">OmegleVC, Klyq, Revfit →</Link>
               </div>
               <div className="contact-availability">
                 <div className="row gap-2 center" style={{ marginBottom: 8 }}>
@@ -179,7 +205,7 @@ export default function ContactPage() {
                   <span className="mono">ACCEPTING NEW PROJECTS</span>
                 </div>
                 <p className="body" style={{ fontSize: 13 }}>
-                  Currently booking engagements starting June 2026.
+                  We're taking on new builds now — tell us what you're shipping.
                 </p>
               </div>
             </aside>

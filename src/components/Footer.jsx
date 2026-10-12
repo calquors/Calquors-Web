@@ -1,15 +1,17 @@
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { COMPANY } from '../data/site'
+import { PROJECTS } from '../data/projects'
 
 const PAGES = [
-  { id: 'home', label: 'Home', path: '/' },
-  { id: 'work', label: 'Work', path: '/work' },
-  { id: 'services', label: 'Services', path: '/services' },
-  { id: 'studio', label: 'Studio', path: '/studio' },
-  { id: 'contact', label: 'Contact', path: '/contact' },
+  { label: 'Home', path: '/' },
+  { label: 'Work', path: '/work' },
+  { label: 'Services', path: '/services' },
+  { label: 'Studio', path: '/studio' },
+  { label: 'Company', path: '/company' },
+  { label: 'Contact', path: '/contact' },
 ]
 
 export default function Footer() {
-  const navigate = useNavigate()
   const year = new Date().getFullYear()
 
   return (
@@ -17,42 +19,53 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-col">
-            <div className="nav-logo" style={{ marginBottom: 16 }}>
-              <div className="nav-logo-mark" />
+            <Link to="/" className="nav-logo" style={{ marginBottom: 16 }}>
+              <img className="nav-logo-mark" src="/favicon.svg" alt="" />
               <span>Calquors</span>
-            </div>
-            <p className="body" style={{ maxWidth: '36ch', fontSize: 14 }}>
+            </Link>
+            <p className="body" style={{ maxWidth: '34ch', fontSize: 14 }}>
               A product studio building mobile apps, websites, and the engineering systems
               that make them work.
             </p>
-            <div className="row gap-2 center" style={{ marginTop: 24 }}>
+            <address className="footer-address">
+              {COMPANY.country}
+            </address>
+            <div className="row gap-2 center" style={{ marginTop: 20 }}>
               <span className="avail-dot" />
               <span className="mono text-mute" style={{ fontSize: 11 }}>ACCEPTING NEW PROJECTS</span>
             </div>
           </div>
-          <div className="footer-col">
-            <h5>Pages</h5>
+          <nav className="footer-col" aria-label="Footer">
+            <h2 className="footer-h">Pages</h2>
             {PAGES.map(p => (
-              <span key={p.id} className="footer-link" onClick={() => navigate(p.path)}>
-                {p.label}
-              </span>
+              <Link key={p.path} to={p.path}>{p.label}</Link>
             ))}
+          </nav>
+          <div className="footer-col">
+            <h2 className="footer-h">Products</h2>
+            {PROJECTS.map(p => {
+              const main = p.links.find(l => l.kind === 'web') || p.links[0]
+              const secondary = p.links.filter(l => l !== main)
+              return (
+                <span key={p.slug} className="footer-product">
+                  <a href={main.url} target="_blank" rel="noopener">{p.name} ↗</a>
+                  {secondary.map(link => (
+                    <a key={link.url} className="footer-sub mono" href={link.url} target="_blank" rel="noopener">{link.label}</a>
+                  ))}
+                </span>
+              )
+            })}
           </div>
           <div className="footer-col">
-            <h5>Products & Backlinks</h5>
-            <a href="https://www.rivelolabs.com" target="_blank" rel="noopener noreferrer" className="footer-link">Rivelo Labs ↗</a>
-            <a href="https://omeglevc.com" target="_blank" rel="noopener noreferrer" className="footer-link">OmegleVC (omeglevc.com) ↗</a>
-            <a href="https://revfit.app" target="_blank" rel="noopener noreferrer" className="footer-link">Revfit (revfit.app) ↗</a>
-          </div>
-          <div className="footer-col">
-            <h5>Contact</h5>
-            <a href="mailto:hello@calquors.studio">hello@calquors.studio</a>
-            <span className="footer-link" onClick={() => navigate('/contact')}>Start a project</span>
+            <h2 className="footer-h">Contact</h2>
+            <a className="footer-mail" href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>
+            <Link to="/contact">Start a project</Link>
           </div>
         </div>
+
         <div className="footer-bottom">
-          <span>© {year} Calquors Studio. All rights reserved.</span>
-          <span>v2.4.0 — Built in studio</span>
+          <span>© {year} {COMPANY.legalName}. All rights reserved.</span>
+          <span>Made in India</span>
         </div>
       </div>
     </footer>

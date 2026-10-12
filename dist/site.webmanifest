@@ -10,5 +10,8 @@
   ],
   "theme_color": "#0d0e12",
   "background_color": "#0d0e12",
-  "display": "standalone"
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "description": "Calquors \u2014 a product studio for iOS apps, web platforms and engineering."
 }

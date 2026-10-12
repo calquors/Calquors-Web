@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const SERVICES = [
   {
@@ -45,7 +45,6 @@ const SERVICES = [
 ]
 
 export default function ServicesPage() {
-  const navigate = useNavigate()
   const [open, setOpen] = useState('mobile')
 
   return (
@@ -128,9 +127,9 @@ export default function ServicesPage() {
           </div>
 
           <div style={{ marginTop: 40, textAlign: 'center' }}>
-            <button className="btn btn-primary" onClick={() => navigate('/contact')}>
+            <Link className="btn btn-primary" to="/contact">
               Get a quote <span className="btn-arrow" />
-            </button>
+            </Link>
           </div>
         </div>
       </section>
