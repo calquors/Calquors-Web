@@ -22,6 +22,21 @@ export const PROJECTS = [
     ],
   },
   {
+    slug: 'omeochat',
+    name: 'OmeoChat',
+    kicker: 'Social · Android',
+    cats: ['mobile'],
+    tagline: 'Meet new people through one-to-one video calls, group rooms and chat, built for mobile.',
+    platforms: ['Android'],
+    color: 'oklch(0.78 0.2 150)',
+    links: [
+      // Add the Google Play link once the listing is public:
+      // { kind: 'play', label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.calquors.omeochat' },
+      { kind: 'web', label: 'Privacy policy', url: 'https://calquors.com/app/omeochat/privacy.html' },
+      { kind: 'web', label: 'Terms of service', url: 'https://calquors.com/app/omeochat/terms.html' },
+    ],
+  },
+  {
     slug: 'klyq',
     name: 'Klyq',
     kicker: 'Social · Android',
