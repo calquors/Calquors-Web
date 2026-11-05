@@ -32,6 +32,7 @@ export const PROJECTS = [
     links: [
       // Add the Google Play link once the listing is public:
       // { kind: 'play', label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.calquors.omeochat' },
+      { kind: 'web', label: 'calquors.com/app/omeochat', url: 'https://www.calquors.com/app/omeochat' },
       { kind: 'web', label: 'Privacy policy', url: 'https://calquors.com/app/omeochat/privacy.html' },
       { kind: 'web', label: 'Terms of service', url: 'https://calquors.com/app/omeochat/terms.html' },
     ],
