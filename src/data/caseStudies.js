@@ -3,19 +3,19 @@
 export const CASE_STUDIES = {
   omeglevc: {
     seoTitle: 'OmegleVC — Random & Group Video Chat App by Calquors',
-    seoDescription: 'OmegleVC is a random and group video chat platform by Calquors Private Limited, live on the web and Google Play with 3,550+ registered users and a 4.8★ rating.',
+    seoDescription: 'OmegleVC is a random video and text chat platform by Calquors Private Limited, live on the web with 3,550+ registered users. Its Android app is OmeoChat on Google Play.',
     schemaType: 'SoftwareApplication',
     category: 'SocialNetworkingApplication',
-    os: 'Web, Android',
+    os: 'Web',
     intro: [
-      'OmegleVC is a random and group video chat platform for meeting new people in real time. Visitors can jump into one-to-one video calls with strangers, join group chats, or drop into live voice rooms — from the browser at omeglevc.com or from the Android app on Google Play.',
+      'OmegleVC is a random and group video chat platform for meeting new people in real time. Visitors can jump into one-to-one video calls with strangers, join group chats, or drop into live voice rooms — from the browser at omeglevc.com. On Android, the experience continues in OmeoChat on Google Play.',
       'Calquors designed, built and runs OmegleVC end to end: the real-time video layer, the web app, the Android app and the infrastructure behind them.',
     ],
     features: [
       'One-to-one random video calls with new people',
       'Group chats and live voice rooms',
       'Runs in the browser — no download needed on the web',
-      'Native Android app on Google Play',
+      'Android app, OmeoChat, on Google Play',
       'Low-latency, peer-to-peer real-time video',
     ],
   },

@@ -20,8 +20,8 @@ export default function CompanyPage() {
               <strong style={{ color: 'var(--fg)' }}>Calquors Private Limited</strong> — also
               written <strong style={{ color: 'var(--fg)' }}>Calquors Pvt Ltd</strong> — is the
               company behind Calquors, a product studio in India.
-              We design, build and run mobile apps and web platforms, including OmegleVC and Klyq
-              on Google Play.
+              We design, build and run mobile apps and web platforms, including OmegleVC on the
+              web, and OmeoChat and Klyq on Google Play.
             </p>
           </div>
         </div>

@@ -16,7 +16,7 @@ export const COMPANY_FAQ = [
   },
   {
     q: 'Which apps has Calquors Private Limited published?',
-    a: 'OmegleVC (web and Android) and Klyq (Android) are published on Google Play under the developer name CALQUORS PRIVATE LIMITED. We also built Revfit for iOS and run Rivelo Labs, our engineering arm.',
+    a: 'OmeoChat and Klyq (both Android) are published on Google Play under the developer name CALQUORS PRIVATE LIMITED. OmegleVC runs on the web at omeglevc.com. We also built Revfit for iOS and run Rivelo Labs, our engineering arm.',
   },
   {
     q: 'Does Calquors take on client projects?',

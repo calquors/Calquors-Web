@@ -6,19 +6,18 @@ export const PROJECTS = [
     name: 'OmegleVC',
     logo: '/omeglevc-logo.jpeg',
     kicker: 'Social · Video chat',
-    cats: ['web', 'mobile'],
-    tagline: 'Random and group video chat — meet new people through video calls, group chats and live voice rooms.',
-    platforms: ['Web', 'Android'],
+    cats: ['web'],
+    tagline: 'Random video and text chat in the browser — meet new people one-to-one, with group rooms in the OmeoChat app.',
+    platforms: ['Web'],
     color: 'oklch(0.66 0.19 255)',
     featured: true,
     stats: [
       { v: '3,550+', k: 'Registered users' },
       { v: '50k+', k: 'Visitors' },
-      { v: '4.8★', k: 'Google Play rating' },
+      { v: 'Web', k: 'No install needed' },
     ],
     links: [
-      { kind: 'web', label: 'omeglevc.com', url: 'https://omeglevc.com' },
-      { kind: 'play', label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.omeglevc.app' },
+      { kind: 'web', label: 'omeglevc.com', url: 'https://www.omeglevc.com/' },
     ],
   },
   {
@@ -30,8 +29,7 @@ export const PROJECTS = [
     platforms: ['Android'],
     color: 'oklch(0.78 0.2 150)',
     links: [
-      // Add the Google Play link once the listing is public:
-      // { kind: 'play', label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.calquors.omeochat' },
+      { kind: 'play', label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.calquors.omeochat' },
       { kind: 'web', label: 'calquors.com/app/omeochat', url: 'https://www.calquors.com/app/omeochat' },
       { kind: 'web', label: 'Privacy policy', url: 'https://calquors.com/app/omeochat/privacy.html' },
       { kind: 'web', label: 'Terms of service', url: 'https://calquors.com/app/omeochat/terms.html' },
@@ -80,6 +78,6 @@ export const PROJECTS = [
 export const PROOF = [
   { v: '3,550+', k: 'Registered users on OmegleVC' },
   { v: '50k+', k: 'Visitors to OmegleVC' },
-  { v: '4.8★', k: 'OmegleVC on Google Play' },
+  { v: '2', k: 'Apps on Google Play' },
   { v: `${PROJECTS.length}`, k: 'Products live today' },
 ]
