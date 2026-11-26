@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
-import { PROJECTS } from '../data/projects'
+import { PROJECTS, LIVE_PROJECTS } from '../data/projects'
 import { COMPANY } from '../data/site'
 
 export default function StudioPage() {
@@ -51,7 +51,7 @@ export default function StudioPage() {
             <span className="eyebrow">Our products</span>
             <h2 className="h1" style={{ marginTop: 12, maxWidth: '18ch' }}>Apps and platforms we own.</h2>
             <p className="body-lg" style={{ marginTop: 16 }}>
-              {PROJECTS.length} products, all live — on the web, Google Play and the App Store.
+              {LIVE_PROJECTS.length} products live on the web, Google Play and the App Store{PROJECTS.length > LIVE_PROJECTS.length ? ', with more on the way' : ''}.
             </p>
           </div>
 
@@ -77,7 +77,7 @@ export default function StudioPage() {
             </div>
             <div className="number-row">
               <span className="mono text-dim">PRODUCTS LIVE ON WEB, GOOGLE PLAY &amp; APP STORE</span>
-              <span className="num-big">{PROJECTS.length}</span>
+              <span className="num-big">{LIVE_PROJECTS.length}</span>
             </div>
           </div>
         </div>

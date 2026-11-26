@@ -30,7 +30,7 @@ export default function ProjectCard({ project, index, featured = false, headingL
         <div className="pc-top">
           <span className={`pc-mark ${project.logo ? 'pc-mark-with-image' : ''}`} aria-hidden="true">{project.logo ? <img className="pc-mark-image" src={project.logo} alt="" width="52" height="52" /> : project.name[0]}</span>
           <span className="pc-index mono">{String(index + 1).padStart(2, '0')}</span>
-          <span className="pc-live mono"><i />Live</span>
+          <span className={`pc-live mono ${project.soon ? 'pc-soon' : ''}`}><i />{project.soon ? 'Coming soon' : 'Live'}</span>
         </div>
 
         <span className="pc-kicker mono">{project.kicker}</span>

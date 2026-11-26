@@ -38,6 +38,25 @@ export const CASE_STUDIES = {
       'Klyq Plus: an optional subscription that removes ads and adds extra filters',
     ],
   },
+  bliz: {
+    seoTitle: 'Bliz — Voice Rooms, Voice & Video Calls | Android App by Calquors',
+    seoDescription: 'Bliz is an Android social app by Calquors Private Limited for adults 18+: live voice rooms, one-to-one voice and video calls, chat and in-room games. Coming soon to Google Play.',
+    schemaType: 'MobileApplication',
+    category: 'SocialNetworkingApplication',
+    os: 'Android',
+    intro: [
+      'Bliz is a voice-first social app for adults (18+). People drop into live voice rooms, talk one-to-one on voice or video calls, play games like Antakshari and Truth or Dare with a room, and keep chatting with the people they click with.',
+      'Every account is verified with a mobile number, hosts are checked with a selfie and voice introduction, and report and block tools are built in. Calquors is building Bliz for Android; it is coming soon to Google Play.',
+    ],
+    features: [
+      'Live voice rooms with hosts and stage speakers',
+      'One-to-one voice and video calls, with the first call free',
+      'Private chat and follows',
+      'In-room games: Truth or Dare, Antakshari and Chor Police',
+      'Daily rewards, streaks and invite-a-friend coins',
+      'Verified mobile numbers, host verification, report and block',
+    ],
+  },
   revfit: {
     seoTitle: 'Revfit — iOS Fitness & Workout Tracking App by Calquors',
     seoDescription: 'Revfit is a native iOS fitness app by Calquors with workout tracking, progress analytics and personalised training plans. Available on the App Store.',

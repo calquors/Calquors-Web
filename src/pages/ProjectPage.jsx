@@ -10,7 +10,7 @@ export default function ProjectPage() {
   const project = PROJECTS.find(p => p.slug === slug)
   if (!project) return <NotFoundPage />
   const cs = CASE_STUDIES[slug] || { intro: [project.tagline], features: [] }
-  const others = PROJECTS.filter(p => p.slug !== slug)
+  const others = PROJECTS.filter(p => p.slug !== slug && !p.soon)
 
   return (
     <div className="page project-page" style={{ '--pc': project.color }}>
@@ -25,7 +25,7 @@ export default function ProjectPage() {
           <div className="cs-head reveal">
             <div className="row gap-3 center" style={{ marginBottom: 20 }}>
               <Mark project={project} />
-              <span className="pc-live mono"><i />Live</span>
+              <span className={`pc-live mono ${project.soon ? 'pc-soon' : ''}`}><i />{project.soon ? 'Coming soon' : 'Live'}</span>
             </div>
             <span className="eyebrow">{project.kicker}</span>
             <h1 className="h-display" style={{ marginTop: 12 }}>{project.name}</h1>
@@ -82,7 +82,7 @@ export default function ProjectPage() {
               <div className="fact"><dt className="mono">Built by</dt><dd><Link to="/company" className="text-accent">Calquors Private Limited</Link></dd></div>
               <div className="fact"><dt className="mono">Platforms</dt><dd>{project.platforms.join(' · ')}</dd></div>
               <div className="fact"><dt className="mono">Category</dt><dd>{project.kicker}</dd></div>
-              <div className="fact"><dt className="mono">Status</dt><dd>Live</dd></div>
+              <div className="fact"><dt className="mono">Status</dt><dd>{project.soon ? 'Coming soon to Google Play' : 'Live'}</dd></div>
               {project.links.map(l => (
                 <div className="fact" key={l.url}>
                   <dt className="mono">{l.kind === 'web' ? 'Website' : l.label}</dt>

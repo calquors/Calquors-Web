@@ -756,6 +756,9 @@
   border: 1px solid color-mix(in oklch, var(--live) 26%, transparent);
 }
 [data-theme="light"] .pc-live { --live: oklch(0.52 0.15 150); }
+.pc-live.pc-soon { --live: oklch(0.8 0.12 80); }
+[data-theme="light"] .pc-live.pc-soon { --live: oklch(0.55 0.12 75); }
+.pc-live.pc-soon i { animation: none; }
 .pc-live i {
   width: 6px;
   height: 6px;

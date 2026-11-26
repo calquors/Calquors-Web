@@ -48,6 +48,22 @@ export const PROJECTS = [
     ],
   },
   {
+    slug: 'bliz',
+    name: 'Bliz',
+    soon: true, // not on Google Play yet: shows "Coming soon" and is left out of live counts
+    kicker: 'Social · Android',
+    cats: ['mobile'],
+    tagline: 'Live voice rooms, one-to-one voice and video calls and chat, with verified members and in-room games.',
+    platforms: ['Android'],
+    color: 'oklch(0.8 0.11 85)',
+    links: [
+      { kind: 'web', label: 'calquors.com/app/bliz', url: 'https://www.calquors.com/app/bliz' },
+      { kind: 'web', label: 'Privacy policy', url: 'https://www.calquors.com/app/bliz/privacy.html' },
+      { kind: 'web', label: 'Terms of service', url: 'https://www.calquors.com/app/bliz/terms.html' },
+      { kind: 'web', label: 'Refunds & payouts', url: 'https://www.calquors.com/app/bliz/refund.html' },
+    ],
+  },
+  {
     slug: 'revfit',
     name: 'Revfit',
     kicker: 'Fitness · iOS',
@@ -74,10 +90,12 @@ export const PROJECTS = [
   },
 ]
 
+export const LIVE_PROJECTS = PROJECTS.filter(p => !p.soon)
+
 // Headline numbers shown in the proof band on the home page.
 export const PROOF = [
   { v: '3,550+', k: 'Registered users on OmegleVC' },
   { v: '50k+', k: 'Visitors to OmegleVC' },
   { v: '2', k: 'Apps on Google Play' },
-  { v: `${PROJECTS.length}`, k: 'Products live today' },
+  { v: `${LIVE_PROJECTS.length}`, k: 'Products live today' },
 ]
