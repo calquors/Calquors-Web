@@ -50,7 +50,7 @@ export const CASE_STUDIES = {
     ],
     features: [
       'Live voice rooms with hosts and stage speakers',
-      'One-to-one voice and video calls, with the first call free',
+      'One-to-one voice and video calls, with free coins to start',
       'Private chat and follows',
       'In-room games: Truth or Dare, Antakshari and Chor Police',
       'Daily rewards, streaks and invite-a-friend coins',
